@@ -1,9 +1,13 @@
 #!/bin/python
+'''
+https://www.hackerrank.com/challenges/equal-stacks
+Implementation inspired by uplinksandy9 & sushant001 comments.
+'''
 
-# Test-case:
-h1 = [3, 1, 1, 1, 1]
-h2 = [3, 1, 2]
-h3 = [5, 1, 1, 1]
+n1, n2, n3 = input().strip().split(' ')
+h1 = list(reversed([int(h1_temp) for h1_temp in input().strip().split(' ')]))
+h2 = list(reversed([int(h2_temp) for h2_temp in input().strip().split(' ')]))
+h3 = list(reversed([int(h3_temp) for h3_temp in input().strip().split(' ')]))
 
 
 def sum_list(numbers):
@@ -21,6 +25,6 @@ stack_heights3 = set(sum_list(h3))
 
 common_heights = stack_heights1.intersection(stack_heights2).intersection(stack_heights3)
 try:
-    max(common_heights)
+    print(max(common_heights))
 except ValueError:
     print(0)
