@@ -71,4 +71,5 @@ assert process([4, 3, 2, 1, 10, 11, 15, 17, 9, 8, 7, 6, 5]) == 6
 assert process([5, 4, 3, 2, 1]) == 0
 assert process([1, 2, 3, 4, 5]) == 1
 
-process([3, 7, 1, 2, 4, 8, 2, 7, 10])
+
+assert process([3, 7, 1, 2, 4, 8, 2, 7, 10]) == 2
