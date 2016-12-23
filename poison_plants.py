@@ -32,7 +32,7 @@ def process(data):
     ceil = data[0]
     floor = data[0]
     death_count = 0
-    global_death_count = 0
+    max_death_count = 0
 
     for index, number in enumerate(data[1:]):
         if number > floor:
@@ -44,14 +44,52 @@ def process(data):
                 ceil = number
             else:
                 death_count += 1
-            global_death_count = max(global_death_count, death_count)
-            print ('index: %s, death-count: %s' % (index + 1, global_death_count) )
+            max_death_count = max(max_death_count, death_count)
+            print('index: %s, death-count: %s' % (index + 1, max_death_count))
         else:
             floor = number
             ceil = number
             death_count = 0
-    return global_death_count
+    return max_death_count
 
+assert process([3, 7, 1, 2, 4, 8, 2, 7, 10]) == 2
+
+'''
+
+floor = ceil = data[0]
+max_death = deaths = 0
+deaths = []
+
+for index, number in enumerate(data):
+    floor = min(floor, number)
+    if the next number is greater than this number:
+        if deaths is empty, push this number
+        else, if the next number is less than the top of the stack, push that number
+
+    else:
+        max_deaths = max(max_deaths, len(deaths))
+        deaths = []
+'''
+
+
+def process(data):
+    max_deaths = 0
+    deaths = []
+    for index, number in enumerate(data[:-1]):
+        next_number = data[index + 1]
+        if next_number > number:
+            if not deaths:
+                deaths.append(next_number)
+            elif next_number <= deaths[-1]:
+                deaths.append(next_number)
+        else:
+            max_deaths = max(max_deaths, len(deaths))
+            deaths = []
+
+    print max_deaths
+    return max_deaths
+
+process([3, 7, 1, 2, 4, 8, 2, 7, 10])  # expect 2
 
 '''
 4 7 10 9
@@ -72,4 +110,4 @@ assert process([5, 4, 3, 2, 1]) == 0
 assert process([1, 2, 3, 4, 5]) == 1
 
 
-assert process([3, 7, 1, 2, 4, 8, 2, 7, 10]) == 2
+
