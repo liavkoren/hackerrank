@@ -4,6 +4,9 @@ https://www.hackerrank.com/challenges/icecream-parlor
 Given a target amount of money to spend, and an unsorted list of prices, find
 the index of the two prices that sum to the target. Print the two indicies,
 lowest then highest.
+
+Note: this code may not handle the case where the price is the same for both
+items correctly.
 '''
 
 from functools import total_ordering
