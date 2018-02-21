@@ -62,7 +62,7 @@ deaths = []
 
 for index, number in enumerate(data):
     floor = min(floor, number)
-    if the next number is greater than this number:
+    if the next number is greater than the floor:
         if deaths is empty, push this number
         else, if the next number is less than the top of the stack, push that number
 
@@ -73,17 +73,24 @@ for index, number in enumerate(data):
 
 
 def process(data):
+    floor = data[0]
     max_deaths = 0
     deaths = []
     for index, number in enumerate(data[:-1]):
         next_number = data[index + 1]
-        if next_number > number:
+        if next_number < number:
+            floor = next_number
+
+        if next_number > floor:
             if not deaths:
                 deaths.append(next_number)
-            elif next_number <= deaths[-1]:
+            elif next_number <= number:
                 deaths.append(next_number)
+            print '%s: death stack: %s' % (index, deaths)
         else:
+            floor = next_number
             max_deaths = max(max_deaths, len(deaths))
+            print 'score: %s' % max_deaths
             deaths = []
 
     print max_deaths
